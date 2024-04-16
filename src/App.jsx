@@ -1,6 +1,6 @@
 import './App.css'
 
-const list = [
+const stories = [
   {
     title: 'React',
     url: 'https://reactjs.org/',
@@ -21,15 +21,28 @@ const list = [
 
 const title = "React";
 
-const List = () => {
+const List = ({ list }) => {
   return (
     <ul>
       {
-        list.map((item) => (<li key={item.objectID}>{item.title}</li>))
+        list.map((item) => (
+          <Item key={item.objectID} item={item} />
+        ))
       }
     </ul>
   );
 }
+
+const Item = ({ item }) => (
+  <li>
+    <span>
+      <a href={item.url}>{item.title}</a>
+    </span>
+    <span>{item.author}</span>
+    <span>{item.num_comments}</span>
+    <span>{item.points}</span>
+  </li>
+);
 
 const Search = () => {
   const handleChange = (event) => {
@@ -51,7 +64,7 @@ const App = () => {
       <h1>Hello {title}</h1>
       <Search />
       <hr />
-      <List />
+      <List list={stories} />
     </div> 
   );
 }
