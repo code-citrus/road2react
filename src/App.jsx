@@ -45,11 +45,12 @@ const Item = ({ item }) => (
   </li>
 );
 
-const Search = () => {
+const Search = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
+    onSearch(event);
   }
 
   return (
@@ -62,10 +63,15 @@ const Search = () => {
 }
 
 const App = () => {
+
+  const handleSearch = (event) => {
+    console.log(event.target.value);
+  }
+
   return (
     <div>
       <h1>Hello {title}</h1>
-      <Search />
+      <Search onSearch={handleSearch} />
       <hr />
       <List list={stories} />
     </div> 

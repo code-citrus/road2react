@@ -21,5 +21,15 @@ const handleChange = (event) => { searchTerm = event.target.value }
 Even though `handleChange` would be called when search text is entered, and the `searchTerm` variable will be updated, it will (1) not work for multiple elements of the same `Search` component, and (2) will not cause a re-render. The `useState`
 function takes initial state as teh parameter value. If you're state depends on previous state, then setSTate can take a func instead of value.
 
+## Callback Handler
+While props can be used to pass information down, there is now way to pass information back up the hiearchy yet. For example, the *App* component might need to know the search text state stored in the *Search* component to filter its results.  Solution:
+  1. The parent component (App) declares callback handler (handleSearch)
+  2. It passes reference to handler as props to child (Search)
+  3. The child calls handler whenever it needs to update the parent.
+  4. The parent executes its handler (handleSEarch) which may trigger
+     a re-render of itself and the child.
+    
+
+
 
 
