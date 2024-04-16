@@ -1,8 +1,12 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Event Handler
+React's *synthetic events* are wrappers around the native browser events from `button`, `input`, and `form` elements. You might have to use `e.preventDefault()` to prevent native browser behavior as well such as page-refresh upon form submission.
 
-Currently, two official plugins are available:
+```
+Search Component:
+<input id="search" type="text", onChange={handleChange}>
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
