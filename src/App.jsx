@@ -1,4 +1,5 @@
 import './App.css'
+import * as React from 'react';
 
 const stories = [
   {
@@ -45,15 +46,17 @@ const Item = ({ item }) => (
 );
 
 const Search = () => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+
   const handleChange = (event) => {
-    console.log(event); // synthetic event (wrapper around browser event)
-    console.log(event.target.value); // the <input> element
+    setSearchTerm(event.target.value);
   }
 
   return (
     <div>
       <label htmlFor="search">Search: </label>
       <input id="search" type="text" onChange={handleChange} />
+      <p>Search for <strong>{searchTerm}</strong></p>
     </div>
   );
 }
