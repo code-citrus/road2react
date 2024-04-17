@@ -46,34 +46,32 @@ const Item = ({ item }) => (
 );
 
 const Search = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    onSearch(event);
-  }
-
   return (
     <div>
       <label htmlFor="search">Search: </label>
-      <input id="search" type="text" onChange={handleChange} />
-      <p>Search for <strong>{searchTerm}</strong></p>
+      <input id="search" type="text" onChange={onSearch} />
     </div>
   );
 }
 
 const App = () => {
 
+  const [searchTerm, setSearchTerm] = React.useState('');
+
   const handleSearch = (event) => {
-    console.log(event.target.value);
+    setSearchTerm(event.target.value);
   }
+
+  // Note: No need to create another state, as the value is purely
+  // based on the searchTerm value. 
+  const searchedStories = stories.filter(s => s.title.includes(searchTerm));
 
   return (
     <div>
       <h1>Hello {title}</h1>
       <Search onSearch={handleSearch} />
       <hr />
-      <List list={stories} />
+      <List list={searchedStories} />
     </div> 
   );
 }
