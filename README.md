@@ -36,13 +36,17 @@ We need to now use the `searchTerm` not only inside *Search* component, but also
 
 - Solution 2: Life the `searchTerm` state up to `App`.  *As best practice, always manage state at level where every component interested in it either manages it or is a component below the state-managing component*. 
 
-# React Controlled Components
+## React Controlled Components
 HTML elements have their own internal state not tied to React. For example, the `<input>` element keeps its value internally. WHen a user types characters, this state flows "into react". There is no way for React to set its value yet.
 
 When we add `<input value={props.search}>`, this becomes a *react controlled component* and the internal and react states are synced. This allows us to set the value to some initial state. WE can also add logic to modify the input values, for example lower case everything?
 
 When the HTML element emits a change, the new value is writte to React state,
 then passed as props to `<input>` as its value, the HTML element uses this to set its internal value. This means you could modify the typed characters on the fly, and the input will display the modified value.
+
+## React Side Effects
+A component's output is defined by its input props, state, and *side-effects* such as the result of a API call or `setTimeout`. We use side-effect to store recent searched in browser local storage.
+
 
 
 
