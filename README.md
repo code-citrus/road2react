@@ -45,7 +45,11 @@ When the HTML element emits a change, the new value is writte to React state,
 then passed as props to `<input>` as its value, the HTML element uses this to set its internal value. This means you could modify the typed characters on the fly, and the input will display the modified value.
 
 ## React Side Effects
-A component's output is defined by its input props, state, and *side-effects* such as the result of a API call or `setTimeout`. We use side-effect to store recent searched in browser local storage.
+A component's output is defined by its input props, state, and *side-effects* such as the result of a API call or `setTimeout`. We use `localStorage.setItem` to write the `searchTerm` to LocalStorage whenever the search box is updated.
+
+Solution 1: Simply add `setItem` call inside `handleSearch`, but doing this means someone could still use `setSearchTerm` (without `handleSearch`) and then the storage would not be set...Yet, we cannot modify the `setSearchTerm` function itself...
+
+
 
 
 
