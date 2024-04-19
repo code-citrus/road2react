@@ -49,6 +49,13 @@ A component's output is defined by its input props, state, and *side-effects* su
 
 Solution 1: Simply add `setItem` call inside `handleSearch`, but doing this means someone could still use `setSearchTerm` (without `handleSearch`) and then the storage would not be set...Yet, we cannot modify the `setSearchTerm` function itself...
 
+### Why is it called a side-effect?
+The main job of a react component is to return an element. Any other thing it does (ex: fetch data, local storage, etc) is a "hidden" side-effect (not part of input/output contract). 
+
+### The useEffect Hook
+This hook should be used for any side-effects you are executing. It tells React that the component needs to do something after each render. The second argument can be used to restrict this from every render to just when some dependency has updated. It can also optionally return a function that will be executed when the component is unmounted. In this sense, it replaces the legacy `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` lifecycle methods. However, it does not replace `shouldComponentUpdate`.
+
+
 
 
 
