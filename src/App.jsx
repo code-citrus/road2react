@@ -54,13 +54,23 @@ const Search = ({ search, onSearch }) => {
   );
 }
 
-const App = () => {
-  const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem('search') || 'React' );
+const useStorageState = (key, initialState) => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem('search') || initialState );
 
-  React.useEffect(() => {
-    localStorage.setItem('search', event.target.value);
-  }, [searchTerm]);
+    React.useEffect(() => {
+      localStorage.setItem(key, value);
+    }, [value, key]);
+
+    return [value, setValue];
+}
+
+const App = () => {
+
+  const [searchTerm, setSearchTerm] = useStorageState(
+    'search', // Local Storage Key
+    'React'   // Initial State
+  );
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
