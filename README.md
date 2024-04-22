@@ -64,6 +64,10 @@ The search element previously returns a wrapper div, but now we use a Fragment i
 ## Resusable Component
 The search component previously rendered just a label and input; this doesn't have to be search specific. Furthermore, it uses `id` attribute which prevents the component from being reused, this should be passed in with a prop.
 
+## Component Composition (Nested Tags)
+*Composition* in React refers to returns JSX tags with children. Instead of using `label` *prop*, we now insert text inside the component. Anything passed inside the JSX tags is available at `props.children`. They can even be other (already created) elements.
+
+
 
 
 
