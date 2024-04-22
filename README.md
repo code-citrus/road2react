@@ -67,6 +67,20 @@ The search component previously rendered just a label and input; this doesn't ha
 ## Component Composition (Nested Tags)
 *Composition* in React refers to returns JSX tags with children. Instead of using `label` *prop*, we now insert text inside the component. Anything passed inside the JSX tags is available at `props.children`. They can even be other (already created) elements.
 
+## Imperative React
+React enables doing the following using declarative style code:
+  - DOM updates & rendering
+  - Declaration of UI state
+  - Event handlers
+Sometimes you need *imperative style* acces to elements, ex:
+  - Direct access to the DOM API (get element size, set focus state)
+  - Complex animations
+  - Third party libraries (ex: D3)
+
+### Part One (Declarative AUtoFocus)
+WE pass `isFocused = true` to the `InputWithLabel` component using boolean shorthand. That component then uses its value to set the `autoFocus` on the `input`.
+
+
 
 
 
