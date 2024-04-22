@@ -55,6 +55,16 @@ The main job of a react component is to return an element. Any other thing it do
 ### The useEffect Hook
 This hook should be used for any side-effects you are executing. It tells React that the component needs to do something after each render. The second argument can be used to restrict this from every render to just when some dependency has updated. It can also optionally return a function that will be executed when the component is unmounted. In this sense, it replaces the legacy `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` lifecycle methods. However, it does not replace `shouldComponentUpdate`.
 
+### Custom Hook (useStorageState)
+This custom hook will maintain the `searchTerm` state variable - initializing it from LocalStorage if avilable and updating LocalStorage when it is updated. A custom hook, first and foremost, is simply just a JS arrow function that encapsulates several calls to `useState` and `useEffect` together. NO react magic here, it's basically just extracting a method.
+
+## Fragments
+The search element previously returns a wrapper div, but now we use a Fragment instead. A fragment wraps sibling elements in a single top-level element without adding them to the rendered output.
+
+## Resusable Component
+The search component previously rendered just a label and input; this doesn't have to be search specific. Furthermore, it uses `id` attribute which prevents the component from being reused, this should be passed in with a prop.
+
+
 
 
 
